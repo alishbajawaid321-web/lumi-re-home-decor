@@ -2123,15 +2123,15 @@ export const isAvailableProduct = (p: Product): boolean =>
 export const AVAILABLE_PRODUCTS: Product[] = PRODUCTS.filter(isAvailableProduct);
 
 export const productsByRoom = (roomSlug: string) =>
-  AVAILABLE_AVAILABLE_PRODUCTS.filter((p) => p.rooms.includes(roomSlug)).sort(
+  AVAILABLE_PRODUCTS.filter((p) => p.rooms.includes(roomSlug)).sort(
     (a, b) => b.popularity - a.popularity,
   );
 
 export const productsByCategory = (categorySlug: string) =>
-  AVAILABLE_AVAILABLE_PRODUCTS.filter((p) => p.category === categorySlug);
+  AVAILABLE_PRODUCTS.filter((p) => p.category === categorySlug);
 
 export const productsBySubcategory = (categorySlug: string, subcategory: string) =>
-  AVAILABLE_AVAILABLE_PRODUCTS.filter((p) => p.category === categorySlug && p.subcategory === subcategory);
+  AVAILABLE_PRODUCTS.filter((p) => p.category === categorySlug && p.subcategory === subcategory);
 
 /** Categories that have at least one available product. Never render CATEGORIES directly. */
 export const AVAILABLE_CATEGORIES: Category[] = CATEGORIES.filter((c) =>
