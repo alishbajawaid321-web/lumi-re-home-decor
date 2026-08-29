@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { Search, X } from "lucide-react";
 import { img } from "@/lib/images";
 import {
-  CATEGORIES,
+  AVAILABLE_CATEGORIES,
   categoryName,
   finalPrice,
   formatPKR,
@@ -78,7 +78,7 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
             <div>
               <p className="eyebrow mb-4 text-muted-foreground">Popular categories</p>
               <div className="flex flex-wrap gap-2">
-                {CATEGORIES.slice(0, 10).map((c) => (
+                {AVAILABLE_CATEGORIES.slice(0, 10).map((c) => (
                   <Link
                     key={c.slug}
                     to="/shop"
@@ -98,7 +98,7 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
                 Try a different word, or start from one of these collections.
               </p>
               <div className="mt-6 flex flex-wrap gap-2">
-                {CATEGORIES.slice(0, 8).map((c) => (
+                {AVAILABLE_CATEGORIES.slice(0, 8).map((c) => (
                   <Link
                     key={c.slug}
                     to="/shop"

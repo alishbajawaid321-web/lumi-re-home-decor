@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ROOMS, productsByRoom } from "@/lib/products";
+import { AVAILABLE_ROOMS, productsByRoom } from "@/lib/products";
 import { RoomCard } from "@/components/site/Cards";
 import { ProductGrid } from "@/components/site/ProductCard";
 import { PageHeader } from "@/components/site/Section";
@@ -35,13 +35,13 @@ function RoomsPage() {
 
       <section className="shell py-16">
         <Reveal className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          {ROOMS.map((r) => (
+          {AVAILABLE_ROOMS.map((r) => (
             <RoomCard key={r.slug} room={r} />
           ))}
         </Reveal>
       </section>
 
-      {ROOMS.map((room) => {
+      {AVAILABLE_ROOMS.map((room) => {
         const products = productsByRoom(room.slug).slice(0, 4);
         if (products.length === 0) return null;
         return (

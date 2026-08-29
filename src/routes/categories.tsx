@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CATEGORIES, productsByCategory } from "@/lib/products";
+import { AVAILABLE_CATEGORIES, productsByCategory } from "@/lib/products";
 import { CategoryCard } from "@/components/site/Cards";
 import { PageHeader } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
@@ -24,8 +24,8 @@ export const Route = createFileRoute("/categories")({
 });
 
 function CategoriesPage() {
-  const featured = CATEGORIES.slice(0, 3);
-  const rest = CATEGORIES.slice(3);
+  const featured = AVAILABLE_CATEGORIES.slice(0, 3);
+  const rest = AVAILABLE_CATEGORIES.slice(3);
 
   return (
     <>

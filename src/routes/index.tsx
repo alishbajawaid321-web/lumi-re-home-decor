@@ -2,8 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ChevronDown } from "lucide-react";
 import { img } from "@/lib/images";
 import {
-  CATEGORIES,
-  ROOMS,
+  AVAILABLE_CATEGORIES,
+  AVAILABLE_ROOMS,
   bestSellers,
   handmadeCollection,
   luxuryCollection,
@@ -135,7 +135,7 @@ function HomePage() {
           />
         </Reveal>
         <Reveal className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {CATEGORIES.slice(0, 8).map((c) => (
+          {AVAILABLE_CATEGORIES.slice(0, 8).map((c) => (
             <CategoryCard key={c.slug} category={c} />
           ))}
         </Reveal>
@@ -153,7 +153,7 @@ function HomePage() {
             />
           </Reveal>
           <Reveal className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4">
-            {ROOMS.map((r) => (
+            {AVAILABLE_ROOMS.map((r) => (
               <RoomCard key={r.slug} room={r} />
             ))}
           </Reveal>
