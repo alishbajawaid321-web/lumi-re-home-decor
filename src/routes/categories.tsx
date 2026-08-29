@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { CATEGORIES, productsByCategory } from "@/lib/products";
 import { CategoryCard } from "@/components/site/Cards";
 import { PageHeader } from "@/components/site/Section";
