@@ -25,6 +25,22 @@ import roomBathroom from "@/assets/room-bathroom.jpg";
 import roomOffice from "@/assets/room-office.jpg";
 import roomEntrance from "@/assets/room-entrance.jpg";
 import roomKids from "@/assets/room-kids.jpg";
+import kidsStickers from "@/assets/kids-stickers.jpg";
+import kidsLighting from "@/assets/kids-lighting.jpg";
+import kidsStorage from "@/assets/kids-storage.jpg";
+import kidsPosters from "@/assets/kids-posters.jpg";
+import kitchenJars from "@/assets/kitchen-jars.jpg";
+import diningTable from "@/assets/dining-table.jpg";
+import bathAccessories from "@/assets/bath-accessories.jpg";
+import bathStorage from "@/assets/bath-storage.jpg";
+import outdoorPlanters from "@/assets/outdoor-planters.jpg";
+import outdoorLighting from "@/assets/outdoor-lighting.jpg";
+import entrySigns from "@/assets/entry-signs.jpg";
+import officeDesk from "@/assets/office-desk.jpg";
+import vanityMirror from "@/assets/vanity-mirror.jpg";
+import wallClocks from "@/assets/wall-clocks.jpg";
+import diffusers from "@/assets/diffusers.jpg";
+import candleHolders from "@/assets/candle-holders.jpg";
 
 /** Single registry: every image key used by product / category / room data. */
 export const IMAGES = {
@@ -58,6 +74,22 @@ export const IMAGES = {
   "room-entrance": roomEntrance,
   "room-kids": roomKids,
   "room-balcony": catOutdoor,
+  "kids-stickers": kidsStickers,
+  "kids-lighting": kidsLighting,
+  "kids-storage": kidsStorage,
+  "kids-posters": kidsPosters,
+  "kitchen-jars": kitchenJars,
+  "dining-table": diningTable,
+  "bath-accessories": bathAccessories,
+  "bath-storage": bathStorage,
+  "outdoor-planters": outdoorPlanters,
+  "outdoor-lighting": outdoorLighting,
+  "entry-signs": entrySigns,
+  "office-desk": officeDesk,
+  "vanity-mirror": vanityMirror,
+  "wall-clocks": wallClocks,
+  diffusers: diffusers,
+  "candle-holders": candleHolders,
 } as const;
 
 export type ImageKey = keyof typeof IMAGES;
