@@ -1,4 +1,5 @@
 import { EXTRA_PRODUCTS } from "./products.extra";
+import { IMAGES } from "./images";
 
 export type Product = {
   id: string;
@@ -2037,7 +2038,7 @@ export const getProduct = (id: string): Product | undefined =>
   PRODUCTS.find((p) => p.id === id);
 
 export const relatedProducts = (product: Product, limit = 4): Product[] =>
-  PRODUCTS.filter((p) => p.id !== product.id)
+  AVAILABLE_PRODUCTS.filter((p) => p.id !== product.id)
     .map((p) => {
       let score = 0;
       if (p.category === product.category) score += 5;
@@ -2055,7 +2056,7 @@ export const searchProducts = (query: string, limit?: number): Product[] => {
   const q = query.trim().toLowerCase();
   if (!q) return [];
   const terms = q.split(/\s+/);
-  const results = PRODUCTS.map((p) => {
+  const results = AVAILABLE_PRODUCTS.map((p) => {
     const haystack = [
       p.name,
       categoryName(p.category),
@@ -2081,22 +2082,22 @@ export const searchProducts = (query: string, limit?: number): Product[] => {
 };
 
 export const newArrivals = (limit = 8) =>
-  [...PRODUCTS]
+  [...AVAILABLE_PRODUCTS]
     .sort((a, b) => Number(!!b.isNew) - Number(!!a.isNew) || b.id.localeCompare(a.id))
     .slice(0, limit);
 
 export const bestSellers = (limit = 8) =>
-  PRODUCTS.filter((p) => p.isBestSeller)
+  AVAILABLE_PRODUCTS.filter((p) => p.isBestSeller)
     .sort((a, b) => b.popularity - a.popularity)
     .slice(0, limit);
 
 export const luxuryCollection = (limit = 6) =>
-  PRODUCTS.filter((p) => p.isLuxury)
+  AVAILABLE_PRODUCTS.filter((p) => p.isLuxury)
     .sort((a, b) => finalPrice(b) - finalPrice(a))
     .slice(0, limit);
 
 export const handmadeCollection = (limit = 6) =>
-  PRODUCTS.filter((p) => p.isHandmade)
+  AVAILABLE_PRODUCTS.filter((p) => p.isHandmade)
     .sort((a, b) => b.popularity - a.popularity)
     .slice(0, limit);
 
@@ -2122,15 +2123,15 @@ export const isAvailableProduct = (p: Product): boolean =>
 export const AVAILABLE_PRODUCTS: Product[] = PRODUCTS.filter(isAvailableProduct);
 
 export const productsByRoom = (roomSlug: string) =>
-  AVAILABLE_PRODUCTS.filter((p) => p.rooms.includes(roomSlug)).sort(
+  AVAILABLE_AVAILABLE_PRODUCTS.filter((p) => p.rooms.includes(roomSlug)).sort(
     (a, b) => b.popularity - a.popularity,
   );
 
 export const productsByCategory = (categorySlug: string) =>
-  AVAILABLE_PRODUCTS.filter((p) => p.category === categorySlug);
+  AVAILABLE_AVAILABLE_PRODUCTS.filter((p) => p.category === categorySlug);
 
 export const productsBySubcategory = (categorySlug: string, subcategory: string) =>
-  AVAILABLE_PRODUCTS.filter((p) => p.category === categorySlug && p.subcategory === subcategory);
+  AVAILABLE_AVAILABLE_PRODUCTS.filter((p) => p.category === categorySlug && p.subcategory === subcategory);
 
 /** Categories that have at least one available product. Never render CATEGORIES directly. */
 export const AVAILABLE_CATEGORIES: Category[] = CATEGORIES.filter((c) =>
