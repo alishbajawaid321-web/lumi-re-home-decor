@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Music2, Send } from "lucide-react";
+import { AVAILABLE_CATEGORIES } from "@/lib/products";
 import { notify } from "@/lib/store";
 import { inputBase } from "@/lib/ui";
 
