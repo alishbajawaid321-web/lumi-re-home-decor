@@ -76,7 +76,7 @@ function AccountPage() {
       </header>
 
       <div className="mt-10 grid gap-10 lg:grid-cols-[14rem_1fr]">
-        <nav aria-label="Account sections">
+        <nav aria-label="Account sections" className="min-w-0">
           <ul className="flex gap-2 overflow-x-auto lg:flex-col lg:gap-1 lg:overflow-visible">
             {TABS.map((t) => (
               <li key={t}>
