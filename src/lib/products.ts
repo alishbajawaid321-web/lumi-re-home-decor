@@ -2100,20 +2100,72 @@ export const handmadeCollection = (limit = 6) =>
     .sort((a, b) => b.popularity - a.popularity)
     .slice(0, limit);
 
+/* ---------------- availability validation ---------------- */
+
+/**
+ * A product only counts towards a category/room/subcategory when it is fully
+ * valid: real id + name, known category, resolvable image, numeric price and
+ * in stock. Everything the site renders is derived from this predicate.
+ */
+export const isAvailableProduct = (p: Product): boolean =>
+  typeof p.id === "string" &&
+  p.id.trim() !== "" &&
+  typeof p.name === "string" &&
+  p.name.trim() !== "" &&
+  CATEGORY_BY_SLUG.has(p.category) &&
+  typeof p.imageKey === "string" &&
+  p.imageKey in IMAGES &&
+  Number.isFinite(p.price) &&
+  finalPrice(p) > 0 &&
+  p.inStock === true;
+
+export const AVAILABLE_PRODUCTS: Product[] = PRODUCTS.filter(isAvailableProduct);
+
 export const productsByRoom = (roomSlug: string) =>
-  PRODUCTS.filter((p) => p.rooms.includes(roomSlug)).sort(
+  AVAILABLE_PRODUCTS.filter((p) => p.rooms.includes(roomSlug)).sort(
     (a, b) => b.popularity - a.popularity,
   );
 
 export const productsByCategory = (categorySlug: string) =>
-  PRODUCTS.filter((p) => p.category === categorySlug);
+  AVAILABLE_PRODUCTS.filter((p) => p.category === categorySlug);
 
-export const ALL_COLORS = Array.from(new Set(PRODUCTS.map((p) => p.color))).sort();
+export const productsBySubcategory = (categorySlug: string, subcategory: string) =>
+  AVAILABLE_PRODUCTS.filter((p) => p.category === categorySlug && p.subcategory === subcategory);
+
+/** Categories that have at least one available product. Never render CATEGORIES directly. */
+export const AVAILABLE_CATEGORIES: Category[] = CATEGORIES.filter((c) =>
+  AVAILABLE_PRODUCTS.some((p) => p.category === c.slug),
+).map((c) => ({
+  ...c,
+  subcategories: c.subcategories.filter((s) =>
+    AVAILABLE_PRODUCTS.some((p) => p.category === c.slug && p.subcategory === s),
+  ),
+}));
+
+export const AVAILABLE_CATEGORY_BY_SLUG = new Map(AVAILABLE_CATEGORIES.map((c) => [c.slug, c]));
+
+export const isCategoryAvailable = (slug: string) => AVAILABLE_CATEGORY_BY_SLUG.has(slug);
+
+export const availableSubcategories = (categorySlug: string): string[] =>
+  AVAILABLE_CATEGORY_BY_SLUG.get(categorySlug)?.subcategories ?? [];
+
+/** Rooms that have at least one available product. */
+export const AVAILABLE_ROOMS: Room[] = ROOMS.filter((r) =>
+  AVAILABLE_PRODUCTS.some((p) => p.rooms.includes(r.slug)),
+);
+
+export const isRoomAvailable = (slug: string) =>
+  AVAILABLE_ROOMS.some((r) => r.slug === slug);
+
+export const categoryProductCount = (slug: string) => productsByCategory(slug).length;
+export const roomProductCount = (slug: string) => productsByRoom(slug).length;
+
+export const ALL_COLORS = Array.from(new Set(AVAILABLE_PRODUCTS.map((p) => p.color))).sort();
 export const ALL_MATERIALS = Array.from(
-  new Set(PRODUCTS.map((p) => (p.material.split(",")[0] ?? p.material).trim())),
+  new Set(AVAILABLE_PRODUCTS.map((p) => (p.material.split(",")[0] ?? p.material).trim())),
 ).sort();
-export const ALL_STYLES = Array.from(new Set(PRODUCTS.map((p) => p.style))).sort();
-export const PRICE_MAX = Math.max(...PRODUCTS.map((p) => finalPrice(p)));
+export const ALL_STYLES = Array.from(new Set(AVAILABLE_PRODUCTS.map((p) => p.style))).sort();
+export const PRICE_MAX = Math.max(...AVAILABLE_PRODUCTS.map((p) => finalPrice(p)));
 
 /** Budget decorator: greedily builds the richest collection under a budget. */
 export function buildBudgetCollection(budget: number, roomSlug: string): Product[] {
