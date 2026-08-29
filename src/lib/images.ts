@@ -74,6 +74,22 @@ export const IMAGES = {
   "room-entrance": roomEntrance,
   "room-kids": roomKids,
   "room-balcony": catOutdoor,
+  "kids-stickers": kidsStickers,
+  "kids-lighting": kidsLighting,
+  "kids-storage": kidsStorage,
+  "kids-posters": kidsPosters,
+  "kitchen-jars": kitchenJars,
+  "dining-table": diningTable,
+  "bath-accessories": bathAccessories,
+  "bath-storage": bathStorage,
+  "outdoor-planters": outdoorPlanters,
+  "outdoor-lighting": outdoorLighting,
+  "entry-signs": entrySigns,
+  "office-desk": officeDesk,
+  "vanity-mirror": vanityMirror,
+  "wall-clocks": wallClocks,
+  diffusers: diffusers,
+  "candle-holders": candleHolders,
 } as const;
 
 export type ImageKey = keyof typeof IMAGES;
