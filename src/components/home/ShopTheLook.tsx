@@ -28,8 +28,8 @@ export function ShopTheLook() {
         description="Tap a marker to see the piece, or take the whole arrangement home."
       />
 
-      <div className="mt-10 grid gap-8 lg:grid-cols-[1.6fr_1fr]">
-        <div className="relative overflow-hidden bg-cream">
+      <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
+        <div className="relative min-w-0 overflow-hidden bg-cream">
           <img
             src={img("shop-the-look")}
             alt="Styled living room corner with a ceramic vase, framed art, brass lamp, linen cushion and a wool rug"
@@ -92,7 +92,7 @@ export function ShopTheLook() {
           })}
         </div>
 
-        <div className="flex flex-col justify-center border border-border bg-cream p-7">
+        <div className="flex min-w-0 flex-col justify-center border border-border bg-cream p-6 sm:p-7">
           <p className="eyebrow text-gold">The pieces</p>
           <ul className="mt-5 divide-y divide-border">
             {hotspots.map((h) => {
