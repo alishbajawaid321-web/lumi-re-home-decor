@@ -5,11 +5,13 @@ import {
   ALL_COLORS,
   ALL_MATERIALS,
   ALL_STYLES,
-  CATEGORIES,
-  CATEGORY_BY_SLUG,
+  AVAILABLE_CATEGORIES,
+  availableSubcategories,
+  isCategoryAvailable,
+  isRoomAvailable,
   PRICE_MAX,
   PRODUCTS,
-  ROOMS,
+  AVAILABLE_ROOMS,
   categoryName,
   finalPrice,
   formatPKR,
@@ -44,6 +46,21 @@ const num = (v: unknown) => {
   return Number.isFinite(n) && v !== "" && v !== null && v !== undefined ? n : undefined;
 };
 
+/** Only keep taxonomy values that actually have available products. */
+const validCategory = (v: unknown) => {
+  const slug = str(v);
+  return slug && isCategoryAvailable(slug) ? slug : undefined;
+};
+const validSubcategory = (c: unknown, v: unknown) => {
+  const cat = validCategory(c);
+  const sub = str(v);
+  return cat && sub && availableSubcategories(cat).includes(sub) ? sub : undefined;
+};
+const validRoom = (v: unknown) => {
+  const slug = str(v);
+  return slug && isRoomAvailable(slug) ? slug : undefined;
+};
+
 const SORTS = [
   { value: "featured", label: "Featured" },
   { value: "newest", label: "Newest" },
@@ -72,9 +89,9 @@ const PRICE_BANDS = [
 export const Route = createFileRoute("/shop")({
   validateSearch: (search: Record<string, unknown>): ShopSearch => ({
     q: str(search["q"]),
-    category: str(search["category"]),
-    subcategory: str(search["subcategory"]),
-    room: str(search["room"]),
+    category: validCategory(search["category"]),
+    subcategory: validSubcategory(search["category"], search["subcategory"]),
+    room: validRoom(search["room"]),
     color: str(search["color"]),
     material: str(search["material"]),
     style: str(search["style"]),
@@ -366,9 +383,7 @@ function Filters({
   update: (patch: Partial<ShopSearch>) => void;
   clearAll: () => void;
 }) {
-  const subcategories = search.category
-    ? (CATEGORY_BY_SLUG.get(search["category"])?.subcategories ?? [])
-    : [];
+  const subcategories = search.category ? availableSubcategories(search["category"]) : [];
 
   return (
     <div className="space-y-8">
@@ -401,7 +416,7 @@ function Filters({
 
       <FilterGroup title="Category">
         <ul className="max-h-64 space-y-1.5 overflow-y-auto pr-1 text-sm">
-          {CATEGORIES.map((c) => (
+          {AVAILABLE_CATEGORIES.map((c) => (
             <li key={c.slug}>
               <button
                 type="button"
@@ -441,7 +456,7 @@ function Filters({
 
       <FilterGroup title="Room">
         <div className="flex flex-wrap gap-2">
-          {ROOMS.map((r) => (
+          {AVAILABLE_ROOMS.map((r) => (
             <Chip
               key={r.slug}
               active={search["room"] === r.slug}
