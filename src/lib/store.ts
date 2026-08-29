@@ -120,25 +120,27 @@ const EMPTY_PROFILE: Profile = {
 /* Stores                                                              */
 /* ------------------------------------------------------------------ */
 
-export const cartStore = createStore<CartLine[]>("lumiere.cart", []);
-export const wishlistStore = createStore<string[]>("lumiere.wishlist", []);
-export const ordersStore = createStore<Order[]>("lumiere.orders", []);
-export const recentStore = createStore<string[]>("lumiere.recent", []);
-export const profileStore = createStore<Profile>("lumiere.profile", EMPTY_PROFILE);
-export const addressStore = createStore<Address[]>("lumiere.addresses", []);
+export const cartStore = createStore<CartLine[]>("lumiere_cart", []);
+export const wishlistStore = createStore<string[]>("lumiere_wishlist", []);
+export const ordersStore = createStore<Order[]>("lumiere_orders", []);
+export const recentStore = createStore<string[]>("lumiere_recent", []);
+export const profileStore = createStore<Profile>("lumiere_user", EMPTY_PROFILE);
+export const addressStore = createStore<Address[]>("lumiere_addresses", []);
 
 /* ------------------------------------------------------------------ */
 /* Toasts                                                              */
 /* ------------------------------------------------------------------ */
 
 export type Toast = { id: number; message: string; tone: "default" | "success" };
+
+const NO_TOASTS: Toast[] = [];
 let toasts: Toast[] = [];
 const toastListeners = new Set<Listener>();
 let toastId = 0;
 
 export const toastStore = {
   get: () => toasts,
-  getServer: () => [] as Toast[],
+  getServer: () => NO_TOASTS,
   subscribe(l: Listener) {
     toastListeners.add(l);
     return () => toastListeners.delete(l);

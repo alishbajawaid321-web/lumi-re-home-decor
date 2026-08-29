@@ -2106,7 +2106,7 @@ export const productsByCategory = (categorySlug: string) =>
 
 export const ALL_COLORS = Array.from(new Set(PRODUCTS.map((p) => p.color))).sort();
 export const ALL_MATERIALS = Array.from(
-  new Set(PRODUCTS.map((p) => p.material.split(",")[0].trim())),
+  new Set(PRODUCTS.map((p) => (p.material.split(",")[0] ?? p.material).trim())),
 ).sort();
 export const ALL_STYLES = Array.from(new Set(PRODUCTS.map((p) => p.style))).sort();
 export const PRICE_MAX = Math.max(...PRODUCTS.map((p) => finalPrice(p)));
