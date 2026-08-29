@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Music2, Send } from "lucide-react";
+import { AVAILABLE_CATEGORIES } from "@/lib/products";
 import { notify } from "@/lib/store";
 import { inputBase } from "@/lib/ui";
 
@@ -13,16 +14,11 @@ const shopLinks = [
   { label: "Sale", to: "/shop" as const, search: { collection: "sale" } },
 ];
 
-const categoryLinks = [
-  { label: "Wall Decor", slug: "wall-decor" },
-  { label: "Showpieces", slug: "showpieces" },
-  { label: "Lighting", slug: "lighting" },
-  { label: "Plants", slug: "plants" },
-  { label: "Candles", slug: "candles" },
-  { label: "Mirrors", slug: "mirrors" },
-  { label: "Rugs", slug: "rugs" },
-  { label: "Personalized Decor", slug: "personalized" },
-];
+// Derived from the catalog: categories with zero available products never appear.
+const categoryLinks = AVAILABLE_CATEGORIES.slice(0, 8).map((c) => ({
+  label: c.name,
+  slug: c.slug,
+}));
 
 export function Footer() {
   const [email, setEmail] = useState("");

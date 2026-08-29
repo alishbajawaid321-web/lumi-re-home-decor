@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { img } from "@/lib/images";
-import { ROOMS, getProduct } from "@/lib/products";
+import { AVAILABLE_ROOMS, getProduct } from "@/lib/products";
 import { PageHeader } from "@/components/site/Section";
 import { Reveal } from "@/components/site/Reveal";
 import { ProductGrid } from "@/components/site/ProductCard";
@@ -109,7 +109,7 @@ function InspirationPage() {
         <p className="eyebrow text-gold">Keep browsing</p>
         <h2 className="mt-3 font-display text-4xl">Pick a room to style next</h2>
         <div className="mt-8 flex flex-wrap gap-3">
-          {ROOMS.map((r) => (
+          {AVAILABLE_ROOMS.map((r) => (
             <Link
               key={r.slug}
               to="/shop"

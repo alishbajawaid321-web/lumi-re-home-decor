@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { img } from "@/lib/images";
 import {
-  ROOMS,
+  AVAILABLE_ROOMS,
   buildBudgetCollection,
   finalPrice,
   formatPKR,
@@ -12,7 +12,7 @@ import { btnPrimary } from "@/lib/ui";
 import { cn } from "@/lib/utils";
 
 const BUDGETS = [10000, 25000, 50000, 100000, 250000];
-const BUDGET_ROOMS = ROOMS.filter((r) =>
+const BUDGET_ROOMS = AVAILABLE_ROOMS.filter((r) =>
   ["living", "bedroom", "dining", "bathroom", "balcony", "entrance"].includes(r.slug),
 );
 
