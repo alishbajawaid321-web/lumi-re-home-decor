@@ -212,7 +212,7 @@ function CheckoutPage() {
         ))}
       </ol>
 
-      <div className="mt-10 grid gap-12 lg:grid-cols-[1fr_22rem]">
+      <div className="mt-10 grid gap-12 lg:grid-cols-[minmax(0,1fr)_22rem]">
         <form onSubmit={next} noValidate className="min-w-0">
           {step === 0 && (
             <fieldset className="space-y-5">
@@ -345,7 +345,7 @@ function CheckoutPage() {
           </div>
         </form>
 
-        <aside className="h-fit border border-border bg-cream p-7 lg:sticky lg:top-28">
+        <aside className="h-fit min-w-0 border border-border bg-cream p-6 sm:p-7 lg:sticky lg:top-28">
           <h2 className="eyebrow text-muted-foreground">Your order</h2>
           <ul className="mt-5 space-y-4">
             {details.map(({ product, qty, lineTotal }) => (
