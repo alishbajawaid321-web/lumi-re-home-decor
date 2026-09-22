@@ -34,12 +34,12 @@ export function Footer() {
   };
 
   return (
-    <footer className="mt-24 border-t border-border bg-cream">
+    <footer className="mt-20 border-t border-border bg-charcoal text-ivory md:mt-24">
       <div className="shell grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-5 lg:py-20">
         <div className="lg:col-span-1">
           <p className="font-display text-2xl tracking-[0.3em]">LUMIÈRE</p>
-          <p className="eyebrow mt-1 text-muted-foreground">Home</p>
-          <p className="mt-5 max-w-xs text-sm text-muted-foreground">
+          <p className="eyebrow mt-1 text-ivory/55">Home</p>
+          <p className="mt-5 max-w-xs text-sm text-ivory/65">
             Thoughtfully curated decor for homes that tell a story. Shipping across Pakistan.
           </p>
           <div className="mt-6 flex gap-3">
@@ -135,15 +135,15 @@ export function Footer() {
         </FooterColumn>
       </div>
 
-      <div className="border-t border-border">
+      <div className="border-t border-ivory/15">
         <div className="shell flex flex-col gap-6 py-10 md:flex-row md:items-center md:justify-between">
           <div>
             <h2 className="font-display text-2xl">A little inspiration, delivered.</h2>
-            <p className="mt-1 text-sm text-muted-foreground">
+            <p className="mt-1 text-sm text-ivory/60">
               Styling notes and new arrivals, once a month.
             </p>
           </div>
-          <form onSubmit={subscribe} className="flex w-full max-w-md gap-2">
+          <form onSubmit={subscribe} className="flex w-full max-w-md flex-col gap-2 sm:flex-row">
             <label htmlFor="footer-email" className="sr-only">
               Email address
             </label>
@@ -153,11 +153,11 @@ export function Footer() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="your@email.com"
-              className={inputBase}
+              className={inputBase + " border-ivory/25 bg-ivory/5 text-ivory placeholder:text-ivory/45"}
             />
             <button
               type="submit"
-              className="border border-espresso bg-espresso px-6 text-[0.68rem] tracking-[0.2em] text-ivory transition-colors hover:bg-transparent hover:text-espresso"
+              className="min-h-11 border border-gold bg-gold px-6 text-[0.68rem] tracking-[0.18em] text-ivory transition-colors hover:bg-transparent"
             >
               SUBSCRIBE
             </button>
@@ -165,8 +165,8 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-border">
-        <div className="shell flex flex-col gap-2 py-6 text-xs text-muted-foreground md:flex-row md:items-center md:justify-between">
+      <div className="border-t border-ivory/15">
+        <div className="shell flex flex-col gap-2 py-6 text-xs text-ivory/55 md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} Lumière Home. A demo storefront.</p>
           <p>Cash on Delivery · Free delivery over ₨10,000 · Karachi · Lahore · Islamabad</p>
         </div>
@@ -178,7 +178,7 @@ export function Footer() {
 function FooterColumn({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <h3 className="eyebrow text-muted-foreground">{title}</h3>
+      <h3 className="eyebrow text-ivory/55">{title}</h3>
       <ul className="mt-5 space-y-3 text-sm">{children}</ul>
     </div>
   );
@@ -191,7 +191,7 @@ function SocialLink({ label, children }: { label: string; children: React.ReactN
       target="_blank"
       rel="noreferrer noopener"
       aria-label={label}
-      className="flex h-9 w-9 items-center justify-center border border-border transition-colors hover:border-espresso hover:text-gold"
+      className="flex h-9 w-9 items-center justify-center rounded-full border border-ivory/20 transition-colors hover:border-gold hover:text-gold"
     >
       {children}
     </a>
