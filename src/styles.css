@@ -6,8 +6,8 @@
 
 /*
  * LUMIÈRE HOME design system.
- * Warm ivory / cream / champagne / soft beige base, espresso + charcoal text,
- * muted gold used sparingly as an accent. All colors in oklch.
+ * Bright warm ivory, pale sand, muted olive and grounded charcoal.
+ * Warm taupe adds depth without making the storefront feel beige-heavy.
  */
 
 @theme inline {
@@ -53,34 +53,34 @@
 :root {
   --radius: 0.125rem;
 
-  --ivory: oklch(0.978 0.008 85);
-  --cream: oklch(0.958 0.013 84);
-  --champagne: oklch(0.912 0.028 82);
-  --beige: oklch(0.882 0.023 78);
-  --espresso: oklch(0.318 0.032 52);
-  --charcoal: oklch(0.268 0.008 60);
-  --gold: oklch(0.708 0.086 82);
-  --emerald-deep: oklch(0.393 0.062 165);
-  --burgundy: oklch(0.372 0.088 20);
+  --ivory: oklch(0.985 0.006 92);
+  --cream: oklch(0.955 0.012 88);
+  --champagne: oklch(0.9 0.024 82);
+  --beige: oklch(0.865 0.022 75);
+  --espresso: oklch(0.29 0.016 60);
+  --charcoal: oklch(0.235 0.01 75);
+  --gold: oklch(0.56 0.055 125);
+  --emerald-deep: oklch(0.4 0.055 135);
+  --burgundy: oklch(0.47 0.07 36);
 
   --background: var(--ivory);
   --foreground: var(--espresso);
-  --card: oklch(1 0 0);
+  --card: oklch(0.997 0.002 90);
   --card-foreground: var(--espresso);
-  --popover: oklch(1 0 0);
+  --popover: oklch(0.997 0.002 90);
   --popover-foreground: var(--espresso);
   --primary: var(--espresso);
   --primary-foreground: var(--ivory);
   --secondary: var(--cream);
   --secondary-foreground: var(--espresso);
   --muted: var(--cream);
-  --muted-foreground: oklch(0.518 0.021 60);
+  --muted-foreground: oklch(0.5 0.018 75);
   --accent: var(--champagne);
   --accent-foreground: var(--espresso);
   --destructive: oklch(0.512 0.152 26);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.888 0.017 80);
-  --input: oklch(0.888 0.017 80);
+  --border: oklch(0.885 0.016 82);
+  --input: oklch(0.885 0.016 82);
   --ring: var(--gold);
 }
 
@@ -134,7 +134,7 @@
   h4 {
     font-family: var(--font-display);
     font-weight: 300;
-    letter-spacing: -0.01em;
+    letter-spacing: 0;
     line-height: 1.12;
   }
 
@@ -166,6 +166,11 @@
   @media (min-width: 1536px) {
     padding-inline: 4rem;
   }
+}
+
+::selection {
+  background: color-mix(in oklab, var(--color-gold) 28%, transparent);
+  color: var(--color-charcoal);
 }
 
 @keyframes lum-fade-up {

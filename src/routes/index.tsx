@@ -65,32 +65,32 @@ function HomePage() {
     <>
       {/* Hero */}
       <section className="relative">
-        <div className="relative h-[82vh] min-h-[32rem] w-full overflow-hidden">
+        <div className="relative h-[calc(100svh-4.5rem)] min-h-[31rem] max-h-[52rem] w-full overflow-hidden md:h-[82vh] md:min-h-[38rem] md:max-h-[58rem]">
           <img
             src={img("hero-living")}
             alt="A sunlit ivory living room with sculptural vases, arched mirror and warm brass lighting"
             width={1920}
             height={1088}
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover object-[58%_center] md:object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-charcoal/60 via-charcoal/25 to-transparent" />
-          <div className="absolute inset-0 flex items-center">
+          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/65 via-charcoal/10 to-transparent md:bg-gradient-to-r md:from-charcoal/58 md:via-charcoal/18 md:to-transparent" />
+          <div className="absolute inset-0 flex items-end pb-16 md:items-center md:pb-0">
             <div className="shell">
-              <div className="max-w-xl">
+              <div className="max-w-xl text-center md:text-left">
                 <p className="eyebrow text-ivory/80">Lumière Home</p>
-                <h1 className="mt-5 font-display text-6xl text-ivory md:text-8xl">
+                <h1 className="mt-4 font-display text-5xl text-ivory sm:text-6xl md:mt-5 md:text-8xl">
                   Elevate Your Space.
                 </h1>
-                <p className="mt-5 max-w-md text-sm text-ivory/85 md:text-base">
+                <p className="mx-auto mt-4 max-w-md text-sm text-ivory/90 md:mx-0 md:mt-5 md:text-base">
                   Thoughtfully curated decor for homes that tell a story.
                 </p>
-                <div className="mt-9 flex flex-wrap gap-3">
+                <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row md:mt-9 md:justify-start">
                   <Link to="/shop" className={btnLight}>
                     SHOP COLLECTION
                   </Link>
                   <Link
                     to="/rooms"
-                    className={btnOutline + " border-ivory text-ivory hover:bg-ivory hover:text-espresso"}
+                    className={btnOutline + " border-ivory text-ivory hover:border-ivory hover:bg-ivory hover:text-charcoal"}
                   >
                     EXPLORE ROOMS
                   </Link>
@@ -100,7 +100,7 @@ function HomePage() {
           </div>
           <a
             href="#new-arrivals"
-            className="absolute bottom-7 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-ivory/80 transition hover:text-ivory"
+            className="absolute bottom-4 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-1 text-ivory/80 transition hover:text-ivory md:flex"
             aria-label="Scroll to new arrivals"
           >
             <span className="eyebrow text-[0.55rem]">Scroll</span>
@@ -110,7 +110,7 @@ function HomePage() {
       </section>
 
       {/* New arrivals */}
-      <section id="new-arrivals" className="shell scroll-mt-24 py-20 md:py-28">
+      <section id="new-arrivals" className="shell scroll-mt-24 py-16 md:py-28">
         <Reveal>
           <SectionHeader
             eyebrow="Just landed"
@@ -119,13 +119,13 @@ function HomePage() {
             action={{ label: "VIEW ALL", to: "/shop", search: { sort: "newest" } }}
           />
         </Reveal>
-        <Reveal className="mt-12">
+        <Reveal className="mt-9 md:mt-12">
           <ProductGrid products={newArrivals(8)} />
         </Reveal>
       </section>
 
       {/* Shop by category */}
-      <section className="shell py-20 md:py-28">
+      <section className="shell py-16 md:py-28">
         <Reveal>
           <SectionHeader
             eyebrow="Browse"
@@ -134,7 +134,7 @@ function HomePage() {
             action={{ label: "ALL CATEGORIES", to: "/categories" }}
           />
         </Reveal>
-        <Reveal className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <Reveal className="mt-9 grid gap-4 sm:grid-cols-2 lg:mt-12 lg:grid-cols-4">
           {AVAILABLE_CATEGORIES.slice(0, 8).map((c) => (
             <CategoryCard key={c.slug} category={c} />
           ))}
@@ -142,7 +142,7 @@ function HomePage() {
       </section>
 
       {/* Shop by room */}
-      <section className="border-y border-border bg-cream py-20 md:py-28">
+      <section className="border-y border-border bg-cream py-16 md:py-28">
         <div className="shell">
           <Reveal>
             <SectionHeader
@@ -152,7 +152,7 @@ function HomePage() {
               action={{ label: "ALL ROOMS", to: "/rooms" }}
             />
           </Reveal>
-          <Reveal className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4">
+          <Reveal className="mt-9 grid grid-cols-2 gap-3 sm:gap-4 md:mt-12 md:grid-cols-4">
             {AVAILABLE_ROOMS.map((r) => (
               <RoomCard key={r.slug} room={r} />
             ))}
@@ -161,7 +161,7 @@ function HomePage() {
       </section>
 
       {/* Best sellers */}
-      <section className="shell py-20 md:py-28">
+      <section className="shell py-16 md:py-28">
         <Reveal>
           <SectionHeader
             eyebrow="Loved most"
@@ -179,7 +179,7 @@ function HomePage() {
       <BudgetDecorator />
 
       {/* Luxury collection */}
-      <section className="shell py-20 md:py-28">
+      <section className="shell py-16 md:py-28">
         <Reveal>
           <SectionHeader
             eyebrow="The Luxury Collection"
@@ -194,7 +194,7 @@ function HomePage() {
       </section>
 
       {/* Handmade */}
-      <section className="border-y border-border bg-cream py-20 md:py-28">
+      <section className="border-y border-border bg-cream py-16 md:py-28">
         <div className="shell">
           <Reveal>
             <SectionHeader
@@ -211,13 +211,13 @@ function HomePage() {
       </section>
 
       {/* Reviews */}
-      <section className="shell py-20 md:py-28">
+      <section className="shell py-16 md:py-28">
         <Reveal>
           <SectionHeader eyebrow="Kind words" title="From homes across Pakistan" />
         </Reveal>
         <Reveal className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {REVIEWS.map((r) => (
-            <figure key={r.name} className="border border-border bg-card p-7">
+            <figure key={r.name} className="border-t border-gold bg-transparent py-6 lg:pr-5">
               <p className="text-gold" aria-label="Rated 5 out of 5">
                 ★★★★★
               </p>

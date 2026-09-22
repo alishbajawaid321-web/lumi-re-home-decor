@@ -7,7 +7,7 @@ export function CategoryCard({ category }: { category: Category }) {
     <Link
       to="/shop"
       search={{ category: category.slug }}
-      className="group relative block overflow-hidden bg-cream"
+      className="group relative block overflow-hidden rounded-md bg-cream ring-1 ring-border/60"
     >
       <img
         src={img(category.imageKey)}
@@ -15,7 +15,7 @@ export function CategoryCard({ category }: { category: Category }) {
         loading="lazy"
         width={1200}
         height={900}
-        className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        className="aspect-[4/3] w-full object-cover transition-transform duration-700 group-hover:scale-[1.035]"
       />
       <span className="absolute inset-0 bg-gradient-to-t from-charcoal/70 via-charcoal/10 to-transparent" />
       <span className="absolute inset-x-0 bottom-0 p-5">
@@ -31,7 +31,7 @@ export function RoomCard({ room }: { room: Room }) {
     <Link
       to="/shop"
       search={{ room: room.slug }}
-      className="group relative block overflow-hidden bg-cream"
+      className="group relative block overflow-hidden rounded-md bg-cream ring-1 ring-border/60"
     >
       <img
         src={img(room.imageKey)}
@@ -39,7 +39,7 @@ export function RoomCard({ room }: { room: Room }) {
         loading="lazy"
         width={1200}
         height={900}
-        className="aspect-[3/4] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+        className="aspect-[3/4] w-full object-cover transition-transform duration-700 group-hover:scale-[1.035]"
       />
       <span className="absolute inset-0 bg-gradient-to-t from-charcoal/75 via-charcoal/5 to-transparent" />
       <span className="absolute inset-x-0 bottom-0 p-5">

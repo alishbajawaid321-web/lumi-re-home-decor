@@ -45,7 +45,7 @@ export function Header() {
       <header
         className={cn(
           "sticky top-0 z-50 border-b transition-colors duration-300",
-          scrolled ? "border-border bg-background/95 backdrop-blur" : "border-transparent bg-background",
+          scrolled ? "border-border bg-background/95 shadow-sm backdrop-blur" : "border-transparent bg-background",
         )}
       >
         <div className="shell flex h-[4.5rem] items-center justify-between gap-4 md:h-20">
@@ -72,7 +72,7 @@ export function Header() {
                 <li key={item.to}>
                   <Link
                     to={item.to}
-                    className="text-[0.7rem] tracking-[0.2em] uppercase text-foreground/80 transition-colors hover:text-gold"
+                    className="text-[0.7rem] tracking-[0.18em] uppercase text-foreground/80 transition-colors hover:text-gold"
                     activeProps={{ className: "text-gold" }}
                     activeOptions={{ exact: item.to === "/" }}
                   >
@@ -184,7 +184,7 @@ function Counter({ value }: { value: number }) {
   return (
     <span
       key={value}
-      className="lum-pop absolute right-0.5 top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-gold px-1 text-[0.6rem] font-medium text-espresso"
+      className="lum-pop absolute right-0.5 top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-gold px-1 text-[0.6rem] font-medium text-ivory"
     >
       {value}
     </span>

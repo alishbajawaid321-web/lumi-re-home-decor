@@ -24,7 +24,7 @@ export function SectionHeader({
     >
       <div className="max-w-2xl">
         {eyebrow ? <p className="eyebrow text-gold">{eyebrow}</p> : null}
-        <h2 className="mt-3 font-display text-4xl md:text-5xl">{title}</h2>
+        <h2 className="mt-3 font-display text-4xl text-charcoal md:text-5xl">{title}</h2>
         {description ? (
           <p className="mt-3 text-sm text-muted-foreground md:text-base">{description}</p>
         ) : null}
@@ -33,7 +33,7 @@ export function SectionHeader({
         <Link
           to={action.to}
           search={action.search as never}
-          className="eyebrow shrink-0 border-b border-espresso pb-1 text-espresso transition-colors hover:border-gold hover:text-gold"
+          className="eyebrow w-fit shrink-0 border-b border-gold pb-1 text-charcoal transition-colors hover:text-gold"
         >
           {action.label}
         </Link>
