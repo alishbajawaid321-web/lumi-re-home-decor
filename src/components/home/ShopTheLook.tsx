@@ -54,7 +54,7 @@ export function ShopTheLook() {
                 </button>
 
                 {isActive ? (
-                  <div className="lum-reveal is-visible absolute left-1/2 top-6 z-10 w-60 -translate-x-1/2 border border-border bg-background p-3 shadow-xl">
+                  <div className="lum-reveal is-visible fixed inset-x-4 bottom-4 z-10 border border-border bg-background p-3 shadow-xl sm:absolute sm:inset-x-auto sm:bottom-auto sm:left-1/2 sm:top-6 sm:w-60 sm:-translate-x-1/2">
                     <div className="flex gap-3">
                       <img
                         src={img(product.imageKey)}
