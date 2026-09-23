@@ -234,7 +234,7 @@ function ShopPage() {
     <div className="shell py-12 md:py-16">
       <header>
         <p className="eyebrow text-gold">The collection</p>
-        <h1 className="mt-3 font-display text-5xl md:text-6xl">
+        <h1 className="mt-3 max-w-3xl font-display text-4xl sm:text-5xl md:text-6xl">
           {search.q
             ? `Results for “${search.q}”`
             : search.category

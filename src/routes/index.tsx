@@ -32,6 +32,8 @@ export const Route = createFileRoute("/")({
         content:
           "Thoughtfully curated decor for homes that tell a story. Shop wall art, lighting, candles and handmade pieces.",
       },
+       { property: "og:type", content: "website" },
+       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: HomePage,
