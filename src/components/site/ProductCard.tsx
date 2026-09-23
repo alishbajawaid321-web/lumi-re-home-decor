@@ -62,6 +62,7 @@ export function ProductCard({ product, className }: { product: Product; classNam
           <button
             type="button"
             onClick={() => addToCart(product.id)}
+            aria-label={`Quick add ${product.name} to cart`}
             className="absolute bottom-3 left-3 flex h-10 w-10 items-center justify-center gap-2 rounded-full bg-charcoal/95 text-[0.65rem] tracking-[0.18em] text-ivory shadow-md backdrop-blur-sm transition-all duration-300 hover:bg-gold focus-visible:bg-gold sm:inset-x-3 sm:w-auto sm:px-3 md:translate-y-3 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 md:focus-visible:translate-y-0 md:focus-visible:opacity-100"
           >
             <Plus width={14} height={14} aria-hidden="true" />
